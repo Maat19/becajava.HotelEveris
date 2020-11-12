@@ -2,6 +2,7 @@ package br.hoteleveris.app.response;
 
 import java.util.List;
 
+import br.hoteleveris.app.model.Ocupacao;
 import br.hoteleveris.app.model.TipoQuarto;
 
 public class ListTipoQuartoResponse extends BaseResponse{

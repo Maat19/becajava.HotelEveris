@@ -11,7 +11,7 @@ import br.hoteleveris.app.request.OcupacaoRequest;
 import br.hoteleveris.app.request.TipoQuartoRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ListOcupacaoResponse;
-import br.hoteleveris.app.response.ListTipoQuartoResponse;
+
 import br.hoteleveris.app.service.OcupacaoService;
 
 @RestController

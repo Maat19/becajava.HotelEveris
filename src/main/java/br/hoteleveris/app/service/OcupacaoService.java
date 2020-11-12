@@ -68,7 +68,7 @@ public class OcupacaoService {
 		return response;
 	}
 	
-public ListOcupacaoResponse listar() {
+		public ListOcupacaoResponse listar() {
 		
 		List<Ocupacao> lista = _repository.findAll();
 		
