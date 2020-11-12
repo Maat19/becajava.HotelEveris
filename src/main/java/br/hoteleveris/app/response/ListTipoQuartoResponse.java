@@ -6,7 +6,7 @@ import br.hoteleveris.app.model.TipoQuarto;
 
 public class ListTipoQuartoResponse extends BaseResponse{
 
-	private List<TipoQuarto> tipos;
+	public List<TipoQuarto> tipos;
 
 	public List<TipoQuarto> getTipos() {
 		return tipos;

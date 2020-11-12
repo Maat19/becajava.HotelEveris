@@ -1,39 +1,20 @@
-package br.hoteleveris.app.model;
+package br.hoteleveris.app.request;
 
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import br.hoteleveris.app.model.Comodidade;
+import br.hoteleveris.app.model.TipoQuarto;
 
-@Entity
-public class Quarto {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+public class QuartoRequest {
+
 	private String andar;
 	private int nquarto;
 	private String situacao;
-	
-	@ManyToOne
-	@JoinColumn(name ="tipoQuartoId")
 	private TipoQuarto tipoQuarto;
 	
-	@ManyToMany(mappedBy = "quarto")
 	Set<Comodidade>comodidade;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 	public String getAndar() {
 		return andar;
 	}
@@ -64,7 +45,4 @@ public class Quarto {
 	public void setComodidade(Set<Comodidade> comodidade) {
 		this.comodidade = comodidade;
 	}
-
-	
-	
 }

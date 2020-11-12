@@ -3,8 +3,8 @@ package br.hoteleveris.app.response;
 public class ClienteResponse extends BaseResponse{
 	
 	public Long id;
-	private String nome;
-	private String cpf;
+	public String nome;
+	public String cpf;
 	
 	
 	public Long getId() {

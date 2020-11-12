@@ -2,9 +2,9 @@ package br.hoteleveris.app.response;
 
 public class TipoQuartoResponse  extends BaseResponse{
 
-	private Long id;
-	private String descricao;
-	private Double valor;
+	public Long id;
+	public String descricao;
+	public Double valor;
 	
 	public Long getId() {
 		return id;
