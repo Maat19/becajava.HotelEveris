@@ -15,10 +15,7 @@ public class TipoQuarto {
 	private Long id;
 	
 	private String descricao;
-	private double valor;
-	
-	
-	
+	private Double valor;
 	public Long getId() {
 		return id;
 	}
@@ -37,6 +34,9 @@ public class TipoQuarto {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
+	
+	
+
 	
 	
 }
