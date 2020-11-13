@@ -1,12 +1,12 @@
 package br.hoteleveris.app.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import br.hoteleveris.app.model.Cliente;
 import br.hoteleveris.app.model.Ocupacao;
-
+import br.hoteleveris.app.model.Quarto;
 import br.hoteleveris.app.repository.OcupacaoRepository;
 import br.hoteleveris.app.request.OcupacaoRequest;
 import br.hoteleveris.app.response.BaseResponse;
@@ -40,33 +40,36 @@ public class OcupacaoService {
 			return response;
 		}
 		
-		if(request.getQuarto().getId() == null ||request.getQuarto().getId() <=0) {
-			response.message = "Id do quarto não preenchido.";
+		if(request.getClienteId() <= 0) {
+			response.message = "Cliente não inserido";
 			return response;
 		}
 		
-		if(request.getCliente().getId() == null || request.getCliente().getId() <=0) {
-			response.message = "Id do cliente não preenchido.";
-			return response;
-		}
-		
-		if(request.getSituacao() == null || request.getSituacao() == "" || request.getSituacao() != "N") {
-			response.message = "Situação não preenchido.";
+		if(request.getQuartoId() <= 0) {
+			response.message = "Quarto não inserido";
 			return response;
 		}
 		
 		ocupacao.setData(request.getData());
 		ocupacao.setDiarias(request.getDiarias());
-		ocupacao.setSituacao(request.getSituacao());
-		ocupacao.setQuarto(request.getQuarto());
-		ocupacao.setCliente(request.getCliente());
+	
+		Quarto obj = new Quarto();
+		obj.setId(request.getQuartoId());
+		ocupacao.setQuarto(obj);
+		
+		
+		Cliente obj1 = new Cliente();
+		obj1.setId(request.getClienteId());
+		ocupacao.setCliente(obj1);
+		
 		
 		_repository.save(ocupacao);
-		
 		response.statusCode = 200;
 		response.message = "Ocupação Inserida com sucesso.";
 		return response;
 	}
+	
+	
 	
 		public ListOcupacaoResponse listar() {
 		

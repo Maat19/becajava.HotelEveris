@@ -1,17 +1,13 @@
 package br.hoteleveris.app.request;
 
-import br.hoteleveris.app.model.Cliente;
-import br.hoteleveris.app.model.Quarto;
+
 
 public class OcupacaoRequest {
 
 	private String data;
 	private int diarias;
-	private String situacao = "N";
-	private Cliente cliente;
-	private Quarto quarto;
-	
-	
+	private Long clienteId;
+	private Long quartoId;
 	public String getData() {
 		return data;
 	}
@@ -24,26 +20,21 @@ public class OcupacaoRequest {
 	public void setDiarias(int diarias) {
 		this.diarias = diarias;
 	}
-	public String getSituacao() {
-		return situacao;
+	public Long getClienteId() {
+		return clienteId;
 	}
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
+	public void setClienteId(Long clienteId) {
+		this.clienteId = clienteId;
 	}
-	public Cliente getCliente() {
-		return cliente;
+	public Long getQuartoId() {
+		return quartoId;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-	public Quarto getQuarto() {
-		return quarto;
-	}
-	public void setQuarto(Quarto quarto) {
-		this.quarto = quarto;
+	public void setQuartoId(Long quartoId) {
+		this.quartoId = quartoId;
 	}
 	
 	
+
 	
 	
 }

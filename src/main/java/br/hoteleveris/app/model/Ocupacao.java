@@ -16,7 +16,7 @@ public class Ocupacao {
 	
 	private String data;
 	private int diarias;
-	private String situacao;
+	private String situacao = "N";
 	
 	
 	@ManyToOne

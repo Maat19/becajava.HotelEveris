@@ -8,7 +8,7 @@ import br.hoteleveris.app.model.TipoQuarto;
 public class QuartoResponse extends BaseResponse{
 
 	public Long id;
-	public String andar;
+	public int andar;
 	public int nquarto;
 	public String situacao;
 	public TipoQuarto tipoQuarto;
@@ -23,11 +23,13 @@ public class QuartoResponse extends BaseResponse{
 		this.id = id;
 	}
 
-	public String getAndar() {
+	
+
+	public int getAndar() {
 		return andar;
 	}
 
-	public void setAndar(String andar) {
+	public void setAndar(int andar) {
 		this.andar = andar;
 	}
 

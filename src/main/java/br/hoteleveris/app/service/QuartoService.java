@@ -10,8 +10,10 @@ import br.hoteleveris.app.model.Quarto;
 import br.hoteleveris.app.model.TipoQuarto;
 import br.hoteleveris.app.repository.QuartoRepository;
 import br.hoteleveris.app.request.QuartoRequest;
+import br.hoteleveris.app.request.SituacaoQuartoPatchRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ClienteResponse;
+import br.hoteleveris.app.response.ListQuartoResponse;
 import br.hoteleveris.app.response.QuartoResponse;
 
 
@@ -33,7 +35,7 @@ public QuartoService( QuartoRepository repository) {
 		response.statusCode = 400;
 		
 		
-		if(request.getAndar() == null || request.getAndar() == "") {
+		if(request.getAndar() <= 0) {
 			response.message = "Andar não inserido.";
 			return response;
 		}
@@ -48,24 +50,16 @@ public QuartoService( QuartoRepository repository) {
 			return response;
 		}
 		
-		if(request.getTipoQuarto().getId() <= 0 || request.getTipoQuarto().getId() == null) {
-			response.message = "Tipo do quarto não inserida.";
-			return response;
-		}
-		
-		if(request.getComodidade().isEmpty()) {
-			response.message = "Tipo de comodidade não inserida.";
-			return response;
-		}
-		
-		
-		
+
 		quarto.setAndar(request.getAndar());
 		quarto.setNquarto(request.getNquarto());
 		quarto.setSituacao(request.getSituacao());
-		quarto.setTipoQuarto(request.getTipoQuarto());
-		quarto.setComodidade(request.getComodidade());
 		
+		TipoQuarto obj = new TipoQuarto();
+		obj.setId(request.getIdTipoQuarto());
+		quarto.setTipoQuarto(obj);
+		
+
 		_repository.save(quarto);
 		response.statusCode = 200;
 		response.message = "Quarto inserido com sucesso";
@@ -91,8 +85,7 @@ public QuartoService( QuartoRepository repository) {
 		response.setAndar(quarto.get().getAndar());
 		response.setNquarto(quarto.get().getNquarto());
 		response.setSituacao(quarto.get().getSituacao());
-		response.setTipoQuarto(quarto.get().getTipoQuarto());
-		response.setComodidade(quarto.get().getComodidade());
+		
 		
 
 		response.statusCode = 200;
@@ -101,6 +94,51 @@ public QuartoService( QuartoRepository repository) {
 
 	}
 		
+	public ListQuartoResponse listar(Long id) {
+		
+		ListQuartoResponse response = new ListQuartoResponse();
+		List<Quarto> lista = _repository.findEcontrarQuartos(id);
+		
+		
+		response.setQuartos(lista);
+		response.statusCode = 200;
+		response.message = "Quarto obtido com sucesso.";
+		
+		return response;
 	}
-
+	
+	
+	//Atualização de Situação do quarto por path
+	
+	public BaseResponse atualizarSituacao(Long id, SituacaoQuartoPatchRequest request) {
+		
+		BaseResponse response = new BaseResponse();
+		
+		Optional<Quarto> quarto  = _repository.findById(id);
+		
+		
+		if(request.getSituacao()  == "" || request.getSituacao() == null) {
+			response.statusCode= 400;
+			response.message = "Situação não preenchida";
+			return response;
+		}
+		
+		if(quarto.isEmpty()  || id <= 0) {
+			response.statusCode= 400;
+			response.message = "Id do quarto não preenchido";
+			return response;
+		}
+		
+		quarto.get().setSituacao(request.getSituacao());
+	
+		
+		_repository.save(quarto.get());
+		
+		response.statusCode =200;
+		response.message = "Atualização feita com sucesso";
+		
+		return response;
+		
+	}
+}
 
