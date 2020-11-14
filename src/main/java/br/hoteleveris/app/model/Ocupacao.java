@@ -75,6 +75,7 @@ public class Ocupacao {
 	public void setQuarto(Quarto quarto) {
 		this.quarto = quarto;
 	}
+
 	
 	
 	

@@ -8,6 +8,7 @@ public class OcupacaoRequest {
 	private int diarias;
 	private Long clienteId;
 	private Long quartoId;
+	
 	public String getData() {
 		return data;
 	}
@@ -32,9 +33,6 @@ public class OcupacaoRequest {
 	public void setQuartoId(Long quartoId) {
 		this.quartoId = quartoId;
 	}
-	
-	
-
 	
 	
 }
