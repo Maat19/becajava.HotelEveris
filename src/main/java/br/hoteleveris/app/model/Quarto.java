@@ -1,12 +1,12 @@
 package br.hoteleveris.app.model;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -17,6 +17,7 @@ public class Quarto {
 	private Long id;
 	
 	private int andar;
+	@Column (unique = true)
 	private int nquarto;
 	private String situacao;
 	
