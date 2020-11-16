@@ -33,7 +33,7 @@ public class ComodidadeService {
 		comodidade.setNome(request.getNome());
 
 		_repository.save(comodidade);
-		response.statusCode = 200;
+		response.statusCode = 201;
 		response.message = "Comodidade inserida com sucesso.";
 		return response;
 	}

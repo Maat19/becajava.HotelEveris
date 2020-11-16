@@ -45,7 +45,7 @@ public class ClienteService {
 		cliente.setHash(request.getHash());
 
 		_repository.save(cliente);
-		response.statusCode = 200;
+		response.statusCode = 201;
 		response.message = "Cliente inserido com sucesso.";
 		return response;
 	}
