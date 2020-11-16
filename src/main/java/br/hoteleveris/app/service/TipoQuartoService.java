@@ -33,7 +33,7 @@ public class TipoQuartoService {
 			return response;
 		}
 		
-		if(request.getValor() <= 0 || request.getValor() == null) {
+		if(request.getValor() <= 0 ) {
 			response.message = "Valor não inserido.";
 			return response;
 		}
@@ -42,7 +42,7 @@ public class TipoQuartoService {
 		tipo.setValor(request.getValor());
 		
 		_repository.save(tipo);
-		response.statusCode = 200;
+		response.statusCode = 201;
 		response.message = "Tipo do Quarto inserido com sucesso.";
 		return response;
 	}

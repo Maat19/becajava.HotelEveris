@@ -12,6 +12,7 @@ import br.hoteleveris.app.request.TipoQuartoRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ListTipoQuartoResponse;
 import br.hoteleveris.app.service.TipoQuartoService;
+;
 
 @RestController
 @RequestMapping("/tiposquarto")

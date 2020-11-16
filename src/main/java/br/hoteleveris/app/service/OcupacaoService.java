@@ -65,7 +65,7 @@ public class OcupacaoService {
 
 		_repository.save(ocupacao);
 		
-		response.statusCode = 200;
+		response.statusCode = 201;
 		response.message = "Ocupação Inserida com sucesso.";
 		return response;
 	}
@@ -76,6 +76,12 @@ public class OcupacaoService {
 
 		ListOcupacaoResponse response = new ListOcupacaoResponse();
 
+//		if(lista == null) {
+//			response.statusCode = 400;
+//			response.message = "Lista vazia";
+//			return response;
+//		}
+		
 		response.setOcupacoes(lista);
 		response.statusCode = 200;
 		response.message = "Lista obtida com sucesso.";

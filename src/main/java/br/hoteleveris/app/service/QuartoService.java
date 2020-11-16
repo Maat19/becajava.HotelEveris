@@ -51,6 +51,12 @@ public class QuartoService {
 			response.message = "Número do quarto não inserida.";
 			return response;
 		}
+		
+		if(request.getIdTipoQuarto() <= 0) {
+			response.message = "Número do tipo quarto não inserida.";
+			return response;
+		}
+		
 
 		quarto.setAndar(request.getAndar());
 		quarto.setNquarto(request.getNquarto());
@@ -80,7 +86,7 @@ public class QuartoService {
 			_repositoryQC.save(quartoComodidade);
 		}
 
-		response.statusCode = 200;
+		response.statusCode = 201;
 		response.message = "Quarto inserido com sucesso";
 		return response;
 	}
