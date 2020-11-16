@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
 import br.hoteleveris.app.request.ComodidadeRequest;
 import br.hoteleveris.app.request.QuartoRequest;
+import br.hoteleveris.app.request.SituacaoQuartoPatchRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ListQuartoResponse;
 
@@ -27,8 +29,6 @@ public class QuartoTest {
           .findFirst()
           .getAsInt();
     }
-	
-	
 	
 	
 	@Test
@@ -263,6 +263,69 @@ public class QuartoTest {
 	
 	}
 	
-
+	@Test
+	public void listarQuarto() {
+		
+		ListQuartoResponse response = service.listar(1L);
+		Assertions.assertEquals(200,response.getStatusCode());
+	}
+	
+	
+	@Test
+	public void atualizarSituacao() {
+		
+		SituacaoQuartoPatchRequest request = new SituacaoQuartoPatchRequest();
+		request.setSituacao("A");
+		Long id= 1L;
+		
+		BaseResponse response = service.atualizarSituacao(id, request);
+		Assertions.assertEquals(200,response.getStatusCode());
+	}
+	
+	@Test
+	public void atualizarSituacaoNull() {
+		
+		SituacaoQuartoPatchRequest request = new SituacaoQuartoPatchRequest();
+		request.setSituacao(null);
+		Long id= 1L;
+		
+		BaseResponse response = service.atualizarSituacao(id, request);
+		Assertions.assertEquals(400,response.getStatusCode());
+	}
+	
+	@Test
+	public void atualizarSituacaoVazio() {
+		
+		SituacaoQuartoPatchRequest request = new SituacaoQuartoPatchRequest();
+		request.setSituacao("");
+		Long id= 1L;
+		
+		BaseResponse response = service.atualizarSituacao(id, request);
+		Assertions.assertEquals(400,response.getStatusCode());
+	}
+	
+	@Test
+	public void atualizarSituacaoId0() {
+		
+		SituacaoQuartoPatchRequest request = new SituacaoQuartoPatchRequest();
+		request.setSituacao("A");
+		Long id= 0L;
+		
+		BaseResponse response = service.atualizarSituacao(id, request);
+		Assertions.assertEquals(400,response.getStatusCode());
+	}
+	
+	@Test
+	public void atualizarSituacaoIdNegativo() {
+		
+		SituacaoQuartoPatchRequest request = new SituacaoQuartoPatchRequest();
+		request.setSituacao("A");
+		Long id= -1L;
+		
+		BaseResponse response = service.atualizarSituacao(id, request);
+		Assertions.assertEquals(400,response.getStatusCode());
+	}
+	
+	
 	
 }

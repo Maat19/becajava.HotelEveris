@@ -19,13 +19,20 @@ public class FaturaService {
 
 	private String hashContaHotel = "gmHMNkCI8P";
 
-	public void inserir() {
-
+	
+	public BaseResponse inserir() {
+		
+		BaseResponse response = new BaseResponse();
 		RestTemplate restTemplate = new RestTemplate();
 		String uri = "http://localhost:8081/operacoes/transferencia";
 
 		List<Ocupacao> lista = repository.findBysituacao("N");
 
+//		if(lista.isEmpty() ) {
+//			response.statusCode = 400;
+//			response.message = "Lista está vazia.";
+		//}
+			
 		for (Ocupacao ocupacao : lista) {
 
 			double valor = ocupacao.getQuarto().getTipoQuarto().getValor() * ocupacao.getDiarias();
@@ -36,12 +43,17 @@ public class FaturaService {
 			request.setHashOrigem(ocupacao.getCliente().getHash());
 			request.setValor(valor);
 
-			BaseResponse response = restTemplate.postForObject(uri, request, BaseResponse.class);
+			restTemplate.postForObject(uri, request, BaseResponse.class);
 
 			ocupacao.setSituacao("P");
 			repository.save(ocupacao);
 		}
-
+		
+		
+		response.statusCode =201;
+		
+		response.message = "Fatura realizada";
+		return response;
 	}
 
 }
