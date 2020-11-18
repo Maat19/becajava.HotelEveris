@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.hoteleveris.app.response.BaseResponse;
+import br.hoteleveris.app.service.implement.FaturaServiceImp;
 
 @SpringBootTest
 public class FaturaTest {
@@ -23,13 +24,7 @@ public class FaturaTest {
 	
 	}
 	
-//	@Test
-//	public void inserirFaturaVazia() {
-//		
-//		BaseResponse response = service.inserir();
-//		Assertions.assertEquals(400,response.getStatusCode());
-//	
-//	}
+
 	
 	
 }

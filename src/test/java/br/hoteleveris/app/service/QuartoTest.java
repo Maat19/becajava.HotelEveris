@@ -15,6 +15,7 @@ import br.hoteleveris.app.request.QuartoRequest;
 import br.hoteleveris.app.request.SituacaoQuartoPatchRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ListQuartoResponse;
+import br.hoteleveris.app.service.implement.QuartoServiceImp;
 
 @SpringBootTest
 public class QuartoTest {
